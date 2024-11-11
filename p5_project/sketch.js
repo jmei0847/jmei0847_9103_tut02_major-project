@@ -42,7 +42,7 @@ function draw() {
 
 
 //Jiaqi
-// The first graph to the left of the first row
+// The first graph from the left of the first row
 class CircularGradientWithRays {
   constructor(cx, cy, r) {
     // Center coordinates and radius
@@ -71,6 +71,9 @@ class CircularGradientWithRays {
       );
       fill(c);
       noStroke();
+      // we use arc funciton here to add a different visual effect to the circle by adding arc
+      // we learn from p5.js
+      // https://p5js.org/reference/p5/arc/
       arc(
         this.cx, this.cy, this.r * 2, this.r * 2, 
         i * angleStep, (i + 1) * angleStep, PIE
@@ -111,6 +114,9 @@ class DotAndLineSquare {
     for (let i = 0; i < this.w / 2; i += this.dotSpacing) {
       fill(0);
       noStroke();
+      // we use ellipse function to add a different visual effect to the graph
+      // we learn from p5.js
+      // https://p5js.org/reference/p5/ellipse/
       ellipse(this.x + i + offset, this.y + j, this.smallDotRadius, this.smallDotRadius);
     }
   }
@@ -200,12 +206,19 @@ class ComplexCircleWithDotsAndShapes {
       color(6, 5, 6), color(191, 194, 195), color(217, 184, 155)
     ];
     // Properties of overlay circles
+    this.overlayColors = [
+      color(224, 177, 165, 120),
+      color(231, 209, 170, 100),
+      color(230, 229, 204, 80),
+      color(142, 166, 171, 80),
+      color(101, 114, 127, 150)
+    ];
     this.overlayCircles = [
-      {x: cx + 30, y: cy - 20, size: r * 0.8, color: color(224, 177, 165, 120)},
-      {x: cx + 40, y: cy + 20, size: r * 0.6, color: color(231, 209, 170, 100)},
-      {x: cx + 20, y: cy + 10, size: r * 0.3, color: color(230, 229, 204, 80)},
-      {x: cx + 25, y: cy - 30, size: r * 0.8, color: color(142, 166, 171, 80)},
-      {x: cx + 10, y: cy + 40, size: r * 0.6, color: color(101, 114, 127, 150)}
+      {x: cx + 30, y: cy - 20, size: r * 0.8},
+      {x: cx + 40, y: cy + 20, size: r * 0.6},
+      {x: cx + 20, y: cy + 10, size: r * 0.3},
+      {x: cx + 25, y: cy - 30, size: r * 0.8},
+      {x: cx + 10, y: cy + 40, size: r * 0.6}
     ];
   }
   display() {
@@ -223,16 +236,18 @@ class ComplexCircleWithDotsAndShapes {
         let xPos = this.cx - this.r / 2 + i * dotSpacing;
         let yPos = this.cy + j * dotSpacing;
         if (dist(xPos, yPos, this.cx, this.cy) < this.r) {
-          fill(this.dotColors[colorIndex % this.dotColors.length]);
+          let randomColor = random(this.dotColors);
+          fill(randomColor);
           noStroke();
           ellipse(xPos, yPos, dotSize);
           colorIndex++;
         }
       }
     }
-    // Draw a translucent overlay circle
+    // Draw a translucent overlay circle, everytime random colour
     for (let circle of this.overlayCircles) {
-      fill(circle.color);
+      let randomOverlayColor = random(this.overlayColors);
+      fill(randomOverlayColor);
       noStroke();
       ellipse(circle.x, circle.y, circle.size);
     }
@@ -271,6 +286,9 @@ class PatternedCircle {
           let y = this.centerY + sin(angle) * r;
           vertex(x, y);
         }
+        // we use vertex function to add a different visual effect to the circle by adding a vertex to the circle
+        // we learn from p5.js
+        // https://p5js.org/reference/p5/vertex/
         vertex(this.centerX, this.centerY);
         endShape(CLOSE);
       }
@@ -813,25 +831,25 @@ class CirclePattern {
   }
 }
 
+// Set up the function of button 
 let count = 0
 let randomNum = Math.random()
-let randomNum2 = Math.random()
 
 const originalBtn = document.getElementById("original")
-const rotateBtn = document.getElementById("clock-rotate-btn")
 const randomBtn = document.getElementById("random-draw")
+const rotateBtn = document.getElementById("clock-rotate-btn")
 const clearBtn = document.getElementById("clear")
 
 originalBtn.addEventListener('click', function(e) {
   reset();
 })
 
-rotateBtn.addEventListener('click', function(e) {
-  count ++;
-  rotateCircles();
+randomBtn.addEventListener('click', function(e) {
+  randomCircles();
 })
 
-randomBtn.addEventListener('click', function(e) {
+rotateBtn.addEventListener('click', function(e) {
+  count ++;
   rotateCircles();
 })
 
@@ -841,6 +859,7 @@ clearBtn.addEventListener('click', function(e) {
 })
 
 
+// function to rotata all the patterns in the graph
 function rotateCircles() {
   let angle = count * PI / 8; // Rotation Angle
 
@@ -889,11 +908,13 @@ function rotateCircles() {
 }
 
 
+// Redraw all the patterns to reset the graph
 function reset(){
   // Clear the previous canvas
   clear();
   background(128, 139, 140);
 
+  // Redraw all patterns
   push();
   translate(-width / 2, -height / 2);
 
@@ -927,6 +948,55 @@ function reset(){
   pattern3.displayThirdCircle();
   let pattern4 = new CirclePattern(width/2+65, height/2+195, 65, 30);
   pattern4.displayFourthCircle();
+
+  pop();
+}
+
+
+// Draw random circles in the graph, but keep their position not moving
+function randomCircles(){
+    // Clear the previous canvas
+    clear();
+    background(128, 139, 140);
+  
+    push();
+    translate(-width / 2, -height / 2);
+
+  // Jiaqi
+  if (random() > 0.5) new CircularGradientWithRays(width / 2 - 195, height / 2 - 195, 65).display();
+  if (random() > 0.5) new DotAndLineSquare(width / 2 - 130, height / 2 - 260, 130, 130).display();
+  if (random() > 0.5) new GradientRingWithLinesAndHoles(width / 2 - 65, height / 2 - 65, 65, 20).display(); 
+  if (random() > 0.5) new ComplexCircleWithDotsAndShapes(width / 2 - 195, height / 2 - 65, 65).display();
+
+  // Elia
+  if (random() > 0.5) new PatternedCircle(width / 2 + 195, height / 2 - 195, 65).display();
+  if (random() > 0.5) new ConcentricCircle(width / 2 + 195, height / 2 - 65, 65).display();
+  if (random() > 0.5) new BisectorCircle(width / 2 + 195, height / 2 + 65, 65).display();
+  if (random() > 0.5) new RoundpieCircle(width / 2 + 195, height / 2 + 195, 65).display();
+
+  // Luna
+  if (random() > 0.5) new RadiantCircle(width / 2 - 195, height / 2 + 195).display();
+  if (random() > 0.5) new RadiantCircleWithRays(width / 2 - 65, height / 2 + 65).display(); 
+  if (random() > 0.5) new RadiantRaysWithConcentricCircles(width / 2 - 195, height / 2 + 65, 2).display();
+  if (random() > 0.5) new OuterDots(width / 2 - 195, height / 2 + 65, 65, 30).display();
+  if (random() > 0.5) new RadiantRaysWithTargetCircles(width / 2 - 65, height / 2 + 195).display();
+  if (random() > 0.5) new CrossLines(width / 2 - 65, height / 2 + 195, 65).display();
+  if (random() > 0.5) new OuterDots2(width / 2 - 65, height / 2 + 195, 65, 12).display();
+
+  // Yixing
+  if (random() > 0.5) new CirclePattern(width / 2 + 65, height / 2 - 195, 65, 30).display();
+  if (random() > 0.5) {
+    let pattern2 = new CirclePattern(width / 2 + 65, height / 2 - 65, 65, 30);
+    pattern2.displaySecondCircle();
+  }
+  if (random() > 0.5) {
+    let pattern3 = new CirclePattern(width / 2 + 65, height / 2 + 65, 65, 30);
+    pattern3.displayThirdCircle();
+  }
+  if (random() > 0.5) {
+    let pattern4 = new CirclePattern(width / 2 + 65, height / 2 + 195, 65, 30);
+    pattern4.displayFourthCircle();
+  }
 
   pop();
 }
