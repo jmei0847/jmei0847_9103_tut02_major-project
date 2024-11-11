@@ -20,9 +20,9 @@ My design's inspiration comes from the kaleidoscope and collage builder.
 When the rotate the kaleidoscope, each rotation brings a different visual picture. When the canvas rotates, it revolves around a rotating central point, constantly generating various shapes, and as the canvas rotates, each shape gradually changes color or appears or disappears, producing a dreamlike visual effect.
 When random draw the patterns on canva, it is like the random appearance of various graphics on a fixed canvas, different colors, random combinations, so that each frame has a new sense of abstract art.
 
-![picture](READMEImage/kaleidoscope inspiration.jpeg)
-![picture](READMEImage/kaleidoscope inspiration 2.jpeg)
-![picture](READMEImage/collage builder inspiration.jpeg)
+![picture](READMEImage/kaleidoscope%20inspiration.jpeg)
+![picture](READMEImage/kaleidoscope%20inspiration%202.jpeg)
+![picture](READMEImage/collage%20builder%20inspiration.jpeg)
 
 ### 2.4 Short technical explanation
 In the functions which acts on the buttons, I referred to The Coding Train's tutorial that talking about how to save the current transformation, then restore that transformaiton. In the function rotateCircles(), randomCircles(), and reset(), I use push() and pop() function to save their individual transformation to make each button can be separated from the function of other buttons.
