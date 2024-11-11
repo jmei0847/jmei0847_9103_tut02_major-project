@@ -1,7 +1,7 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(128, 139, 140);
-  noLoop(); 
+  noLoop();
 
   //Jiaqi
   new CircularGradientWithRays(width/2-195, height/2-195, 65).display();
@@ -343,8 +343,9 @@ class ConcentricCircle {
   display() {
     // Draw gradual concentric circles from outside to inside
     for (let r = this.maxRadius; r > 0; r -= 15) {
-      let colorIndex = floor(map(r, 0, this.maxRadius, 0, this.colors.length - 1));
-      fill(this.colors[colorIndex]);
+      // Randomly select a color for each circle
+      let randomColor = random(this.colors); 
+      fill(randomColor);
       noStroke();
       ellipse(this.centerX, this.centerY, r * 2);
     }
