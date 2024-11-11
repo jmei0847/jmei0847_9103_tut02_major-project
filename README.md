@@ -24,6 +24,10 @@ When random draw the patterns on canva, it is like the random appearance of vari
 ![picture](READMEImage/kaleidoscope%20inspiration%202.jpeg)
 ![picture](READMEImage/collage%20builder%20inspiration.jpeg)
 
+  [Reference of picture 1](https://www.google.com/imgres?q=%E4%B8%87%E8%8A%B1%E7%AD%92&imgurl=https%3A%2F%2Fimage.uisdc.com%2Fwp-content%2Fuploads%2Fcovers%2F201604%2Fai-design-kaleidoscope-effect-b.jpg&imgrefurl=https%3A%2F%2Fwww.uisdc.com%2Fai-design-kaleidoscope-effect&docid=Z7V1h715u6gV4M&tbnid=z4vics_LKk7JfM&vet=12ahUKEwi-uYLCwtSJAxXkyjgGHWtiFVAQM3oECGMQAA..i&w=440&h=280&hcb=2&ved=2ahUKEwi-uYLCwtSJAxXkyjgGHWtiFVAQM3oECGMQAA)
+[Reference of picture 2](https://www.google.com/imgres?q=%E4%B8%87%E8%8A%B1%E7%AD%92&imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Fgeometric-design-mosaic-vector-kaleidoscope-260nw-1110979655.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fzh%2Fimage-vector%2Fgeometric-design-mosaic-vector-kaleidoscope-abstract-1110979655&docid=1tURNfBB2xztvM&tbnid=DuLLRdFvDFIZmM&vet=12ahUKEwi-uYLCwtSJAxXkyjgGHWtiFVAQM3oECDgQAA..i&w=462&h=280&hcb=2&ved=2ahUKEwi-uYLCwtSJAxXkyjgGHWtiFVAQM3oECDgQAA)
+[Reference of picture 3](https://www.google.com/imgres?q=collage%20builder&imgurl=https%3A%2F%2Fpixlr.com%2Fimages%2Fcollage%2Fendless.webp&imgrefurl=https%3A%2F%2Fpixlr.com%2Fphoto-collage%2F&docid=2LfZ4OHlCV_o7M&tbnid=7mFtBiwyTmbgMM&vet=12ahUKEwjf4PbZwtSJAxWDxDgGHT6fFD4QM3oECCgQAA..i&w=1024&h=1024&hcb=2&ved=2ahUKEwjf4PbZwtSJAxWDxDgGHT6fFD4QM3oECCgQAA)
+
 ### 2.4 Short technical explanation
 In the functions which acts on the buttons, I referred to The Coding Train's tutorial that talking about how to save the current transformation, then restore that transformaiton. In the function rotateCircles(), randomCircles(), and reset(), I use push() and pop() function to save their individual transformation to make each button can be separated from the function of other buttons.
 
