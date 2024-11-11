@@ -41,6 +41,8 @@ function draw() {
 }
 
 
+//Jiaqi
+// The first graph to the left of the first row
 class CircularGradientWithRays {
   constructor(cx, cy, r) {
     // Center coordinates and radius
@@ -87,6 +89,7 @@ class CircularGradientWithRays {
 }
 
 
+// The second graph from the left of the first row
 class DotAndLineSquare {
   constructor(x,y,w,h){
     // Properties of a square
@@ -131,6 +134,7 @@ class DotAndLineSquare {
 }
 
 
+// The second graph from the left of the second line
 class GradientRingWithLinesAndHoles {
   constructor(cx, cy, outerR, thickness) {
     // Properties of the ring
@@ -185,6 +189,7 @@ class GradientRingWithLinesAndHoles {
   }
 }
 
+// The first graph from the left of the second line
 class ComplexCircleWithDotsAndShapes {
   constructor(cx, cy, r) {
     this.cx = cx;
@@ -236,6 +241,7 @@ class ComplexCircleWithDotsAndShapes {
 
 
 //Elia
+// The fourth graph from the left of the first line
 class PatternedCircle {
   constructor(centerX, centerY, maxRadius) {
     this.centerX = centerX;
@@ -296,78 +302,7 @@ class PatternedCircle {
   }
 }
 
-
-class BisectorCircle {
-  constructor(centerX, centerY) {
-    this.centerX = centerX;
-    this.centerY = centerY;
-    this.colors = [
-      [231, 209, 170], [195, 151, 125], [173, 135, 134],
-      [135, 134, 138], [101, 114, 127], [117, 141, 160],
-      [142, 166, 171], [165, 186, 187], [224, 236, 217],
-      [230, 229, 204]
-    ];
-    this.layers = 15;
-    this.petals = 12;
-    this.maxRadius = 65;
-  }
-  display() {
-    for (let i = 0; i < this.layers; i++) {
-      // Calculate the radius of the current layer
-      let layerRadius = map(i, 0, this.layers, 10, this.maxRadius);
-      // Add random angular offset
-      let angleOffset = random(0, TWO_PI);
-
-      for (let j = 0; j < this.petals; j++) {
-        let angleStart = j * (TWO_PI / this.petals) + angleOffset;
-        let angleEnd = angleStart + TWO_PI / this.petals - 0.1;
-        let col = this.colors[int(random(this.colors.length))];
-        
-        fill(col[0], col[1], col[2]);
-        noStroke();
-        arc(this.centerX, this.centerY, layerRadius * 2, layerRadius * 2, angleStart, angleEnd, PIE);
-      }
-    }
-  }
-}
-
-
-class RoundpieCircle {
-  constructor(centerX, centerY, maxRadius) {
-    this.centerX = centerX;
-    this.centerY = centerY;
-    this.maxRadius = maxRadius;
-    this.layers = 10;
-    this.colors = [
-      [231, 209, 170], [195, 151, 125], [173, 135, 134],
-      [135, 134, 138], [101, 114, 127], [117, 141, 160],
-      [142, 166, 171], [165, 186, 187], [224, 236, 217],
-      [230, 229, 204]
-    ];
-  }
-  display() {
-    // Draw circular layers from outside to inside
-    for (let i = this.layers; i > 0; i--) {
-      // Calculate the radius of the current layer
-      let radius = map(i, 0, this.layers, 0, this.maxRadius);
-      // Determine the number of segments randomly
-      let segments = int(random(5, 20));
-      let angleStep = TWO_PI / segments;
-      // Draw segments
-      for (let j = 0; j < segments; j++) {
-        // Calculate the range of angles for each segment
-        let angleStart = j * angleStep;
-        let angleEnd = angleStart + angleStep;
-        let col = this.colors[int(random(this.colors.length))];
-        // Draw the sector
-        fill(col[0], col[1], col[2]);
-        arc(this.centerX, this.centerY, radius * 2, radius * 2, angleStart, angleEnd, PIE);
-      }
-    }
-  }
-}
-
-
+// The fourth graph from the left of the second line
 class ConcentricCircle {
   constructor(centerX, centerY, maxRadius) {
     this.centerX = centerX;
@@ -410,7 +345,80 @@ class ConcentricCircle {
   }
 }
 
+// The fourth graph from the left of the third line
+class BisectorCircle {
+  constructor(centerX, centerY) {
+    this.centerX = centerX;
+    this.centerY = centerY;
+    this.colors = [
+      [231, 209, 170], [195, 151, 125], [173, 135, 134],
+      [135, 134, 138], [101, 114, 127], [117, 141, 160],
+      [142, 166, 171], [165, 186, 187], [224, 236, 217],
+      [230, 229, 204]
+    ];
+    this.layers = 15;
+    this.petals = 12;
+    this.maxRadius = 65;
+  }
+  display() {
+    for (let i = 0; i < this.layers; i++) {
+      // Calculate the radius of the current layer
+      let layerRadius = map(i, 0, this.layers, 10, this.maxRadius);
+      // Add random angular offset
+      let angleOffset = random(0, TWO_PI);
 
+      for (let j = 0; j < this.petals; j++) {
+        let angleStart = j * (TWO_PI / this.petals) + angleOffset;
+        let angleEnd = angleStart + TWO_PI / this.petals - 0.1;
+        let col = this.colors[int(random(this.colors.length))];
+        
+        fill(col[0], col[1], col[2]);
+        noStroke();
+        arc(this.centerX, this.centerY, layerRadius * 2, layerRadius * 2, angleStart, angleEnd, PIE);
+      }
+    }
+  }
+}
+
+// The fourth graph from the left of the fourth line
+class RoundpieCircle {
+  constructor(centerX, centerY, maxRadius) {
+    this.centerX = centerX;
+    this.centerY = centerY;
+    this.maxRadius = maxRadius;
+    this.layers = 10;
+    this.colors = [
+      [231, 209, 170], [195, 151, 125], [173, 135, 134],
+      [135, 134, 138], [101, 114, 127], [117, 141, 160],
+      [142, 166, 171], [165, 186, 187], [224, 236, 217],
+      [230, 229, 204]
+    ];
+  }
+  display() {
+    // Draw circular layers from outside to inside
+    for (let i = this.layers; i > 0; i--) {
+      // Calculate the radius of the current layer
+      let radius = map(i, 0, this.layers, 0, this.maxRadius);
+      // Determine the number of segments randomly
+      let segments = int(random(5, 20));
+      let angleStep = TWO_PI / segments;
+      // Draw segments
+      for (let j = 0; j < segments; j++) {
+        // Calculate the range of angles for each segment
+        let angleStart = j * angleStep;
+        let angleEnd = angleStart + angleStep;
+        let col = this.colors[int(random(this.colors.length))];
+        // Draw the sector
+        fill(col[0], col[1], col[2]);
+        arc(this.centerX, this.centerY, radius * 2, radius * 2, angleStart, angleEnd, PIE);
+      }
+    }
+  }
+}
+
+
+// Luna
+// The first graph from the left of the fourth line
 class RadiantCircle {
   constructor(cx, cy) {
     this.cx = cx;
@@ -441,20 +449,31 @@ class RadiantCircle {
   }
 }
 
-
+// The second graph from the left of the third line
 class RadiantCircleWithRays {
   constructor(cx, cy) {
     this.cx = cx;
     this.cy = cy;
     this.numRays = 50;
     this.maxRadius = 65;
+    this.colors = [
+      [231, 209, 170], [195, 151, 125], [173, 135, 134],
+      [135, 134, 138], [101, 114, 127], [117, 141, 160],
+      [142, 166, 171], [165, 186, 187], [224, 236, 217],
+      [230, 229, 204]
+    ];
   }
   display() {
-    fill(150, 170, 180, 200);
+    // random choose three colour from the above list
+    let color1 = random(this.colors);
+    let color2 = random(this.colors);
+    let color3 = random(this.colors);
+
+    fill(color1[0], color1[1], color1[2], 200);
     ellipse(this.cx-30, this.cy-30, 50, 50);
-    fill(173,135,134);
+    fill(color2[0], color2[1], color2[2]);
     ellipse(this.cx+30, this.cy+10, 40, 40);
-    fill(213, 177, 146);
+    fill(color3[0], color3[1], color3[2]);
     ellipse(this.cx-30, this.cy+30, 20, 20);
 
     for (let i = 0; i < this.numRays; i++) {
@@ -475,7 +494,7 @@ class RadiantCircleWithRays {
   }
 }
 
-
+// The first graph from the left of the third line
 class RadiantRaysWithConcentricCircles {
   constructor(cx, cy, radiusCount) {
     this.cx = cx;
@@ -529,7 +548,6 @@ class RadiantRaysWithConcentricCircles {
   }
 }
 
-
 class OuterDots {
   constructor(cx, cy, radius, numDots) {
     this.cx = cx;
@@ -553,7 +571,7 @@ class OuterDots {
   }
 }
 
-
+// The second graph from the left of the fourth line
 class RadiantRaysWithTargetCircles {
   constructor(cx, cy) {
     this.cx = cx;
@@ -597,7 +615,6 @@ class RadiantRaysWithTargetCircles {
   }
 }
 
-
 class OuterDots2 {
   constructor(cx, cy, radius, numDots) {
     this.cx = cx;
@@ -621,7 +638,6 @@ class OuterDots2 {
     }
   }
 }
-
 
 class CrossLines {
   constructor(cx, cy, lineLength) {
@@ -709,6 +725,8 @@ class RectangularPattern {
 }
 
 
+//Yixing
+// The first to fourth graph from the left of the third line
 class CirclePattern {
   constructor(x, y, radius, points) {
     this.x = x;
@@ -911,5 +929,4 @@ function reset(){
   pattern4.displayFourthCircle();
 
   pop();
-
 }
