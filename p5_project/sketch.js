@@ -55,7 +55,6 @@ class CircularGradientWithRays {
       color(230, 229, 204)
     ];
   }
-
   display() {
     let numSegments = 200;// Number of gradient segments
     let angleStep = TWO_PI / numSegments;
@@ -146,7 +145,6 @@ class GradientRingWithLinesAndHoles {
       color(165,186,187), color(224,236,217)
     ];
   }
-
   display() {
     let numSegments = 100;// Number of gradient segments
     let angleStep = TWO_PI / numSegments;
@@ -186,6 +184,7 @@ class GradientRingWithLinesAndHoles {
     }
   }
 }
+
 class ComplexCircleWithDotsAndShapes {
   constructor(cx, cy, r) {
     this.cx = cx;
@@ -204,7 +203,6 @@ class ComplexCircleWithDotsAndShapes {
       {x: cx + 10, y: cy + 40, size: r * 0.6, color: color(101, 114, 127, 150)}
     ];
   }
-
   display() {
     stroke(0);
     strokeWeight(1);
@@ -250,7 +248,6 @@ class PatternedCircle {
       [230, 229, 204]
     ];
   }
-
   display() {
     // Define four main Angle points
     let angles = [PI / 2, PI, (3 * PI) / 2, TWO_PI];
@@ -277,6 +274,7 @@ class PatternedCircle {
     strokeWeight(1);
     line(this.centerX - this.maxRadius, this.centerY, this.centerX + this.maxRadius, this.centerY);
     line(this.centerX, this.centerY - this.maxRadius, this.centerX, this.centerY + this.maxRadius);
+    
     // Add random points to decorate
     for (let i = 0; i < 200; i++) {
       let angle = random(TWO_PI);
@@ -313,7 +311,6 @@ class BisectorCircle {
     this.petals = 12;
     this.maxRadius = 65;
   }
-
   display() {
     for (let i = 0; i < this.layers; i++) {
       // Calculate the radius of the current layer
@@ -348,7 +345,6 @@ class RoundpieCircle {
       [230, 229, 204]
     ];
   }
-
   display() {
     // Draw circular layers from outside to inside
     for (let i = this.layers; i > 0; i--) {
@@ -423,7 +419,6 @@ class RadiantCircle {
     this.maxRadius = 65;
     this.innerRadius = 20;
   }
-
   display() {
     // Create a radial dot matrix effect
     for (let i = 0; i < this.numRays; i++) {
@@ -454,7 +449,6 @@ class RadiantCircleWithRays {
     this.numRays = 50;
     this.maxRadius = 65;
   }
-
   display() {
     fill(150, 170, 180, 200);
     ellipse(this.cx-30, this.cy-30, 50, 50);
@@ -491,7 +485,6 @@ class RadiantRaysWithConcentricCircles {
     this.radiusStep = 25;
     this.maxRadius = 65;
   }
-
   display() {
     fill(0);
     stroke(0);
@@ -559,13 +552,14 @@ class OuterDots {
     }
   }
 }
+
+
 class RadiantRaysWithTargetCircles {
   constructor(cx, cy) {
     this.cx = cx;
     this.cy = cy;
     this.radiusStep = 20;
   }
-
   display() {
     fill(0);
     stroke(0);
@@ -635,7 +629,6 @@ class CrossLines {
     this.cy = cy;
     this.lineLength = lineLength;
   }
-
   display() {
     stroke(0);
     strokeWeight(0.5);
@@ -659,7 +652,6 @@ class SpiralPattern {
       color(108, 116, 117)
     ];
   }
-
   display() {
     noFill();
     // Control the fineness of the spiral
@@ -695,7 +687,6 @@ class RectangularPattern {
       color(230, 229, 204)
     ];
   }
-
   display() {
     // Create a gradient effect for rotating rectangles
     for (let i = 0; i < this.numRects; i++) {
@@ -725,7 +716,6 @@ class CirclePattern {
     this.radius = radius;
     this.points = points;
   }
-
   display() {
     // First variant: Basic dot and line pattern
     let angleStep = TWO_PI / this.points;
@@ -809,38 +799,38 @@ let count = 0
 let randomNum = Math.random()
 let randomNum2 = Math.random()
 
+const originalBtn = document.getElementById("original")
 const rotateBtn = document.getElementById("clock-rotate-btn")
-const antiRotateBtn = document.getElementById("anti-clock-rotate-btn")
-const randomBtn = document.getElementById("random-print")
+const randomBtn = document.getElementById("random-draw")
 const clearBtn = document.getElementById("clear")
 
-rotateBtn.addEventListener('click', (event) => {
+originalBtn.addEventListener('click', function(e) {
+  reset();
+})
+
+rotateBtn.addEventListener('click', function(e) {
   count ++;
   rotateCircles();
 })
 
-antiRotateBtn.addEventListener('click', (event) => {
-  count --
+randomBtn.addEventListener('click', function(e) {
   rotateCircles();
 })
 
-randomBtn.addEventListener('click', (event) => {
-  rotateCircles();
-})
-
-clearBtn.addEventListener('click', (event) => {
+clearBtn.addEventListener('click', function(e) {
   clear()
+  background(128, 139, 140);
 })
 
 
 function rotateCircles() {
-  let angle = count * PI / 8; // 旋转角度
+  let angle = count * PI / 8; // Rotation Angle
 
-  // 清除之前的画布
+  // Clear the previous canvas
   clear();
   background(128, 139, 140);
 
-  // 重新绘制所有图案并应用旋转
+  // Redraw all patterns and apply rotation
   push();
   rotate(angle);
   translate(-width / 2, -height / 2);
@@ -875,6 +865,50 @@ function rotateCircles() {
   Math.random() > randomNum ? pattern3.displayThirdCircle() : null;
   let pattern4 = new CirclePattern(width/2+65, height/2+195, 65, 30);
   Math.random() > randomNum ? pattern4.displayFourthCircle() : null;
+
+  pop();
+
+}
+
+
+function reset(){
+  // Clear the previous canvas
+  clear();
+  background(128, 139, 140);
+
+  push();
+  translate(-width / 2, -height / 2);
+
+  //Jiaqi
+  new CircularGradientWithRays(width/2-195, height/2-195, 65).display();
+  new DotAndLineSquare(width/2-130, height/2-260, 130, 130).display();
+  new GradientRingWithLinesAndHoles(width/2-65, height/2-65, 65, 20).display(); 
+  new ComplexCircleWithDotsAndShapes(width/2-195, height/2-65, 65).display();
+
+  //Elia
+  new PatternedCircle(width/2+195, height/2-195, 65).display();
+  new ConcentricCircle(width/2+195, height/2-65, 65).display();
+  new BisectorCircle(width/2+195, height/2+65, 65).display();
+  new RoundpieCircle(width/2+195, height/2+195, 65).display();
+  
+  //Luna
+  new RadiantCircle(width/2-195, height/2+195).display();
+  new RadiantCircleWithRays(width/2-65, height/2+65).display(); 
+  new RadiantRaysWithConcentricCircles(width/2-195, height/2+65, 2).display();
+  new OuterDots(width/2-195, height/2+65, 65, 30).display();
+  new RadiantRaysWithTargetCircles(width/2-65, height/2+195).display();
+  new CrossLines(width/2-65, height/2+195, 65).display();
+  new OuterDots2(width/2-65, height/2+195, 65, 12).display();
+  
+  //Yixing
+  let pattern = new CirclePattern(width/2+65, height/2-195, 65, 30);
+  pattern.display();
+  let pattern2 = new CirclePattern(width/2+65, height/2-65, 65, 30);
+  pattern2.displaySecondCircle();
+  let pattern3 = new CirclePattern(width/2+65, height/2+65, 65, 30);
+  pattern3.displayThirdCircle();
+  let pattern4 = new CirclePattern(width/2+65, height/2+195, 65, 30);
+  pattern4.displayFourthCircle();
 
   pop();
 
