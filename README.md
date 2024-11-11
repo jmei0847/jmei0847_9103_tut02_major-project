@@ -2,7 +2,6 @@
 
 ## 1. Instructions on how to interact with the work
 - Click the "Original/Refresh" button at the top to refresh the canvas directly or reset the current canvas
-Click 
 - Click the "Random Draw" button to randomly generate different patterns on the canvas
 - Click the "Rotate & Random draw" button to rotate the canvas and randomly generate  patterns
 - Click the "Clear" button to clear the current canvas
