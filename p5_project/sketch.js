@@ -804,3 +804,78 @@ class CirclePattern {
     }
   }
 }
+
+let count = 0
+let randomNum = Math.random()
+let randomNum2 = Math.random()
+
+const rotateBtn = document.getElementById("clock-rotate-btn")
+const antiRotateBtn = document.getElementById("anti-clock-rotate-btn")
+const randomBtn = document.getElementById("random-print")
+const clearBtn = document.getElementById("clear")
+
+rotateBtn.addEventListener('click', (event) => {
+  count ++;
+  rotateCircles();
+})
+
+antiRotateBtn.addEventListener('click', (event) => {
+  count --
+  rotateCircles();
+})
+
+randomBtn.addEventListener('click', (event) => {
+  rotateCircles();
+})
+
+clearBtn.addEventListener('click', (event) => {
+  clear()
+})
+
+
+function rotateCircles() {
+  let angle = count * PI / 8; // 旋转角度
+
+  // 清除之前的画布
+  clear();
+  background(128, 139, 140);
+
+  // 重新绘制所有图案并应用旋转
+  push();
+  rotate(angle);
+  translate(-width / 2, -height / 2);
+
+  //Jiaqi
+  Math.random() > randomNum ? new CircularGradientWithRays(width/2-195, height/2-195, 65).display() : null;
+  Math.random() > randomNum ? new DotAndLineSquare(width/2-130, height/2-260, 130, 130).display() : null;
+  Math.random() > randomNum ? new GradientRingWithLinesAndHoles(width/2-65, height/2-65, 65, 20).display() : null; 
+  Math.random() > randomNum ? new ComplexCircleWithDotsAndShapes(width/2-195, height/2-65, 65).display() : null;
+
+  //Elia
+  Math.random() > randomNum ? new PatternedCircle(width/2+195, height/2-195, 65).display() : null;
+  Math.random() > randomNum ? new ConcentricCircle(width/2+195, height/2-65, 65).display() : null;
+  Math.random() > randomNum ? new BisectorCircle(width/2+195, height/2+65, 65).display() : null;
+  Math.random() > randomNum ? new RoundpieCircle(width/2+195, height/2+195, 65).display() : null;
+  
+  //Luna
+  Math.random() > randomNum ? new RadiantCircle(width/2-195, height/2+195).display() : null;
+  Math.random() > randomNum ? new RadiantCircleWithRays(width/2-65, height/2+65).display() : null; 
+  Math.random() > randomNum ? new RadiantRaysWithConcentricCircles(width/2-195, height/2+65, 2).display() : null;
+  Math.random() > randomNum ? new OuterDots(width/2-195, height/2+65, 65, 30).display() : null;
+  Math.random() > randomNum ? new RadiantRaysWithTargetCircles(width/2-65, height/2+195).display() : null;
+  Math.random() > randomNum ? new CrossLines(width/2-65, height/2+195, 65).display() : null;
+  Math.random() > randomNum ? new OuterDots2(width/2-65, height/2+195, 65, 12).display() : null;
+  
+  //Yixing
+  let pattern = new CirclePattern(width/2+65, height/2-195, 65, 30);
+  Math.random() > randomNum ? pattern.display() : null;
+  let pattern2 = new CirclePattern(width/2+65, height/2-65, 65, 30);
+  Math.random() > randomNum ? pattern2.displaySecondCircle() : null;
+  let pattern3 = new CirclePattern(width/2+65, height/2+65, 65, 30);
+  Math.random() > randomNum ? pattern3.displayThirdCircle() : null;
+  let pattern4 = new CirclePattern(width/2+65, height/2+195, 65, 30);
+  Math.random() > randomNum ? pattern4.displayFourthCircle() : null;
+
+  pop();
+
+}
